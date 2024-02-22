@@ -5,8 +5,11 @@ function ChatInput({uname, messages, setMessage}){
 	const [textInput, setTextInput] = useState("")
 
 	const handleSend = async () => {
-		await socket.emit("send_message", {message: textInput, name: uname})
-		setMessage(messages => [...messages,{message: textInput, name: "Me"}])
+		if(textInput){
+			await socket.emit("send_message", {message: textInput, name: uname})
+			setMessage(messages => [...messages,{message: textInput, name: "Me"}])
+			setTextInput("")
+		}
 	}
 
 	return(
@@ -15,6 +18,9 @@ function ChatInput({uname, messages, setMessage}){
 				className="input input-bordered grow focus:outline-none"
 				placeholder="Message..."
 				onChange={(e) => {setTextInput(e.target.value)}}
+				onKeyDown={(e) => {e.key === "Enter" && handleSend()}}
+				value={textInput}
+				autoFocus
 			></input>
 			<button 
 				className="btn btn-square btn-primary"

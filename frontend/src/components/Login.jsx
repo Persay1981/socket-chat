@@ -4,7 +4,7 @@ function Login({setUsername}){
 	const [textInput, setTextInput] = useState("")
 
 	const handleSubmit = () => {
-		setUsername(textInput)
+		textInput && setUsername(textInput)
 	}
 
 	return(
@@ -14,6 +14,8 @@ function Login({setUsername}){
 					placeholder="Name..."
 					onChange={(e) => {setTextInput(e.target.value)}}
 					className="input input-bordered bg-base-300 focus:outline-none"
+					onKeyDown={(e) => {e.key === "Enter" && handleSubmit()}}
+					autoFocus
 				></input>
 				<button className="btn btn-primary" onClick={handleSubmit}>Connect</button>
 			</div>
