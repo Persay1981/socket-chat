@@ -9,7 +9,7 @@ function Login({setUsername}){
 
 	return(
 		<div className="flex items-center justify-center h-svh">
-			<div className="p-6 flex items-center justify-center gap-4 bg-base-300 rounded-lg">
+			<div className="p-4 sm:p-6 flex items-center justify-center gap-4 bg-base-300 rounded-lg">
 				<input
 					placeholder="Name..."
 					onChange={(e) => {setTextInput(e.target.value)}}

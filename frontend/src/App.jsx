@@ -4,6 +4,7 @@ import { socket } from "./socket"
 import Login from "./components/Login"
 import ChatInput from "./components/ChatInput"
 import ChatBody from "./components/ChatBody"
+import Header from "./components/Header"
 
 function App() {
 	const [username, setUsername] = useState("")
@@ -20,6 +21,7 @@ function App() {
 			{!username && <Login setUsername={setUsername}/>}
 			{username && 
 				<div className="h-svh flex flex-col items-center justify-between">
+					<Header username={username} setUsername={setUsername} setMessages={setMessages}/>
 					<ChatBody messages={messages} className="grow"/>
 					<ChatInput uname={username} setMessage={setMessages} messages={messages} className="bottom-0"/>
 				</div>
