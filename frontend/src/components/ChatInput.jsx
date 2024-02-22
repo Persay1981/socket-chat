@@ -13,9 +13,9 @@ function ChatInput({uname, messages, setMessage}){
 	}
 
 	return(
-		<div className="w-screen flex items-center justify-between gap-2 p-2">
+		<div className="w-screen flex items-center justify-between gap-2 p-2 bg-base-300">
 			<input 
-				className="input input-bordered grow focus:outline-none"
+				className="input input-bordered bg-base-300 grow focus:outline-none"
 				placeholder="Message..."
 				onChange={(e) => {setTextInput(e.target.value)}}
 				onKeyDown={(e) => {e.key === "Enter" && handleSend()}}
