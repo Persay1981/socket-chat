@@ -1,12 +1,13 @@
-function Header({username, setUsername, setMessages}){
+function Header({username, setUsername, setMessages, groupChat}){
 	const handleLogout = () => {
 		setUsername("")
 		setMessages([])
 	}
+	// console.log(groupChat)
 	return(
 		<div className="navbar bg-base-300">
 			<div className="flex-1">
-				<a className="btn btn-ghost text-xl">Socket Chat</a>
+				<a className="btn btn-ghost text-xl">{groupChat}</a>
 			</div>
 			<div className="flex-none gap-3">
 				<p className="font-bold">{username}</p>
