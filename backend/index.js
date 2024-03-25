@@ -18,8 +18,11 @@ const io = new Server(server,{
 })
 
 io.on("connection", (socket) => {
+	socket.on('join',function(room) {
+		socket.join(room);
+	})
 	socket.on("send_message", (message) => {
-		socket.broadcast.emit("receieve_message", message)
+		socket.to(message.groupChatName).emit("receive_message", message)
 	})
 })
 
