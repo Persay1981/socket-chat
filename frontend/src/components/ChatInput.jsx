@@ -1,13 +1,13 @@
 import {useState} from "react"
 import { socket } from "../socket"
 
-function ChatInput({uname, messages, setMessage}){
+function ChatInput({uname, messages, setMessage, groupChat}){
 	const [textInput, setTextInput] = useState("")
 
 	const handleSend = async () => {
 		if(textInput){
-			await socket.emit("send_message", {message: textInput, name: uname})
-			setMessage(messages => [...messages,{message: textInput, name: "Me"}])
+			await socket.emit("send_message", {message: textInput, name: uname, groupChatName: groupChat})
+			setMessage(messages => [...messages,{message: textInput, name: "Me", groupChatName: groupChat}])
 			setTextInput("")
 		}
 	}
